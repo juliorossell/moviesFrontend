@@ -1,0 +1,11 @@
+
+<div class="container-movie">
+  <ng-container *ngFor="let item of movieList">
+    <div class="card">
+      <img [src] ="item.imgURL" class="imagen">
+    </div>
+  </ng-container>
+
+
+</div>
+<app-spinner *ngIf="loadingPage"></app-spinner>

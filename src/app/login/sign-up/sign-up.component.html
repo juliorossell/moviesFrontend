@@ -1,0 +1,25 @@
+
+<div class="container w-100 ">
+
+  <form [formGroup] ="signUpForm" autocomplete="off" class="w-400p p-3">
+    <div class="flex-column mb-2">
+      <label class="label-form">Correo electronico</label>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+
+    <div class="flex-column mb-2">
+      <label class="label-form">Contraseña</label>
+      <input type="password" class="form-control" formControlName="password">
+    </div>
+
+    <div class="flex-row jc-center mb-1">
+      <button class="btn btn-primary main-button-m" (click) ="onSubmitForm()">Crear cuenta &nbsp;</button>
+    </div>
+
+    <span>Ya tengo cuenta  <a [routerLink]="['/login']" >regresar</a></span>
+
+  </form>
+
+  <app-spinner *ngIf="loadingPage"></app-spinner>
+
+</div>

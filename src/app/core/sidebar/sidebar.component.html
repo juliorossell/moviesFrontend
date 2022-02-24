@@ -1,0 +1,19 @@
+
+<div class="menu">
+  <ul>
+    <li class="menu-item">
+      <a href="javascript:void(0)" [routerLink]="['managment/movies']" routerLinkActive="router-link-active" >
+        <span > Peliculas </span>
+      </a>
+    </li>
+    <li class="menu-item">
+      <ng-container *ngIf="isAdminUser()">
+        <a href="javascript:void(0)" [routerLink]="['managment/logs']" routerLinkActive="router-link-active">
+          <span >  Eventos usuario  </span>
+        </a>
+      </ng-container>
+
+
+    </li>
+  </ul>
+</div>

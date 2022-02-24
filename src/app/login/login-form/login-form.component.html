@@ -1,0 +1,28 @@
+
+<div class="container w-100 ">
+  <form [formGroup] ="loginForm" autocomplete="off" class="w-400p p-3 flex-column">
+    <div class="flex-column mb-2">
+      <label class="label-form">Usuario</label>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+
+    <div class="flex-column mb-2">
+      <label class="label-form">Contraseña</label>
+      <input type="password" class="form-control" formControlName="password">
+    </div>
+
+    <div class="flex-row jc-center mb-1">
+      <button class="btn btn-primary main-button-m" (click) ="onSubmitForm()">Iniciar sesión &nbsp;</button>
+    </div>
+
+
+    <span class="mb-2">Si aún no esta registrado por favor <a [routerLink]="['sign-up']" >registrese</a></span>
+
+
+    <span class="error" *ngIf="errorMessage">{{errorMessage}}.</span>
+
+  </form>
+
+  <app-spinner *ngIf="loadingPage"></app-spinner>
+
+</div>
