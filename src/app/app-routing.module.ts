@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainTemplateComponent } from './core/main-template/main-template.component';
 import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
 import { CanActivateViaAuthGuard } from './shared/guards/Auth.guard';
+import { CanActivateViaIsLoggedGuard } from './shared/guards/IsLogged.guard';
 
 const routes: Routes = [
   {
     path: 'login',
+    canActivate: [CanActivateViaIsLoggedGuard],
     children: [
       {
         path: '',
