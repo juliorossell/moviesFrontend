@@ -48,7 +48,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
         .pipe(
           delay(2000),
           takeUntil(this.destroy$),
-          map((res: any) => this.userProfileService.setTokenInSessionStorage(res.body)),
+          map((res: any) => this.userProfileService.setTokenInLocalStorage(res.body)),
           tap(() => this.loadingPage = false),
           tap(() => this.router.navigate(['modules/managment/movies'])),
           catchError(async() => {

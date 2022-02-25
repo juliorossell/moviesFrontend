@@ -21,12 +21,12 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.loadingPage = true;
-    const token = sessionStorage.getItem('token') || 'null';
+    const token = localStorage.getItem('token') || 'null';
     this.securityService.logout(token)
       .pipe(
         delay(1000),
         takeUntil(this.destroy$),
-        tap(() => sessionStorage.clear()),
+        tap(() => localStorage.clear()),
         tap(() => this.loadingPage = false),
         tap(() => this.router.navigate(['login'])),
         catchError(async() => {

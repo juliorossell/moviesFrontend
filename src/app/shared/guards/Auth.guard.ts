@@ -13,11 +13,11 @@ export class CanActivateViaAuthGuard implements CanActivate {
   }
 
   checkAuthenticated(): boolean {
-    const tokenSesion = sessionStorage.getItem('token');
+    const tokenSesion = localStorage.getItem('token');
     if (tokenSesion) {
       return true;
     } else {
-      sessionStorage.clear();
+      localStorage.clear();
       this.router.navigate(['login']);
       return false;
     }

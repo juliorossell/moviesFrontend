@@ -21,7 +21,7 @@ export class AppComponent {
       filter((res: any) => this.userIsLogged(res)),
       filter((res: any) => this.anotherToken(res.token)),
       tap(() => alert('Se inicio sesión desde otro dispositivo')),
-      tap(() => sessionStorage.clear()),
+      tap(() => localStorage.clear()),
       tap(() => this.router.navigate(['login'])),
     )
     .subscribe()
@@ -29,12 +29,12 @@ export class AppComponent {
   }
 
   userIsLogged(user: any) {
-    const userSesion = JSON.parse(sessionStorage.getItem('userInfo') || 'null');
+    const userSesion = JSON.parse(localStorage.getItem('userInfo') || 'null');
     return userSesion && userSesion._id === user.userInfo._id;
   }
 
   anotherToken(token: any) {
-    const tokenInSession = sessionStorage.getItem('token');
+    const tokenInSession = localStorage.getItem('token');
     return  tokenInSession !== token;
   }
 

@@ -6,8 +6,8 @@ export class UserProfileService {
 
   constructor() {}
 
-  setTokenInSessionStorage(body: IAuthIdentity) {
-    sessionStorage.setItem('token', body.token);
-    sessionStorage.setItem('userInfo', JSON.stringify(body.userInfo));
+  setTokenInLocalStorage(body: IAuthIdentity) {
+    localStorage.setItem('token', body.token);
+    localStorage.setItem('userInfo', JSON.stringify(body.userInfo));
   }
 }

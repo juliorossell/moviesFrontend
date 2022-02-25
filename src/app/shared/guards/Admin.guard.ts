@@ -15,7 +15,7 @@ export class CanActivateAdminGuard implements CanActivate {
   }
 
   checkAdminRole(): boolean {
-    const userInfo = JSON.parse(sessionStorage.getItem('userInfo') || 'null');
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || 'null');
     if (userInfo) {
       const isadmin = userInfo.roles.some( (x: IRole) => x.name === this.adminRole )
       if (isadmin) return true;

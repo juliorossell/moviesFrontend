@@ -4,7 +4,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, delay, map, Subject, takeUntil, tap } from 'rxjs';
-import { IAuthIdentity } from 'src/app/shared/interfaces/auth-identity';
 import { FormService } from 'src/app/shared/services/form-service';
 import { SecurityService } from 'src/app/shared/services/micro-services/security-service';
 import { SocketWebService } from 'src/app/shared/services/socket-web.service';
@@ -32,8 +31,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     private router: Router,
     private socket: SocketWebService,
   ) {
-    sessionStorage.clear();
-    // this.createForm();
+    localStorage.clear();
   }
 
   ngOnInit() {
@@ -53,10 +51,10 @@ export class LoginFormComponent implements OnInit, OnDestroy {
       const formValues = this.loginForm.getRawValue();
       this.securityService.login(formValues)
         .pipe(
-          delay(2000),
+          delay(1000),
           takeUntil(this.destroy$),
           map((res: any) => {
-            this.userProfileService.setTokenInSessionStorage(res.body),
+            this.userProfileService.setTokenInLocalStorage(res.body),
             this.socket.emitEvent('client:userLogged', res.body )
           }),
           tap(() => this.loadingPage = false),
